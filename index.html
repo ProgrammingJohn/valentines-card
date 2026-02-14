@@ -8,26 +8,35 @@
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     background: #1b1b1b;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    min-height: 100dvh;
     margin: 0;
-    gap: 12px;
+    padding: 10px 10px 16px;
+    gap: 10px;
+    overflow: hidden;
   }
 
   #game-shell {
     position: relative;
+    width: min(96vw, 768px);
   }
 
   canvas {
+    display: block;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
-    width: min(95vw, 768px);
+    width: 100%;
     height: auto;
+    max-height: 70dvh;
     border: 3px solid #333;
   }
 
@@ -52,17 +61,21 @@
   #valentine-message {
     font-family: "Press Start 2P", "Courier New", monospace;
     color: #000000;
-    /* font-size: clamp(10px, 1.6vw, 18px); */
-    font-size: 13px;
-    line-height: 1.8;
-    padding: 0 16px;
+    font-size: clamp(8px, 2vw, 11px);
+    line-height: 1.5;
+    padding: 0 10px;
     opacity: 1;
     text-align: center;
   }
 
+  #valentine-accent {
+    color: #c83b21;
+    font-size: clamp(10px, 2.4vw, 12px);
+  }
+
   #valentine-heart {
     display: block;
-    width: clamp(30px, 6vw, 30px);
+    width: clamp(34px, 10vw, 56px);
     height: auto;
     margin: 20px auto 0;
     image-rendering: pixelated;
@@ -71,19 +84,37 @@
 
   #mobile-controls {
     display: flex;
-    gap: 12px;
+    width: min(96vw, 768px);
+    gap: clamp(8px, 3vw, 12px);
+    justify-content: center;
   }
 
   #mobile-controls button {
-    min-width: 54px;
-    min-height: 54px;
+    width: clamp(48px, 17vw, 58px);
+    height: clamp(48px, 17vw, 58px);
     border: 2px solid #101010;
     background: #f1d48a;
     color: #1a1a1a;
     font-family: "Press Start 2P", "Courier New", monospace;
-    font-size: 16px;
+    font-size: clamp(13px, 4vw, 16px);
     cursor: pointer;
     touch-action: manipulation;
+    padding: 0;
+  }
+
+  @media (max-width: 480px) {
+    #valentine-content {
+      transform: translateY(8px);
+    }
+
+    #valentine-message {
+      font-size: 8px;
+      line-height: 1.4;
+    }
+
+    #valentine-heart {
+      margin-top: 12px;
+    }
   }
 </style>
 </head>
@@ -93,7 +124,7 @@
     <canvas id="game"></canvas>
     <div id="valentine-overlay">
       <div id="valentine-content">
-        <div id="valentine-message">Will You Be <br>My<br> <span style="color: #c83b21; font-size: 15px;">Valentine?</span></div>
+        <div id="valentine-message">Will You Be <br>My<br> <span id="valentine-accent">Valentine?</span></div>
         <img id="valentine-heart" src="/assets/heart.png" alt="Pixel heart">
       </div>
     </div>
