@@ -21,9 +21,9 @@ const valentineOverlay = document.getElementById("valentine-overlay");
 // const shreyaSprite = new Image();
 // const shreyaSpriteFlipped = new Image();
 const scene = new Image();
-scene.src = "/assets/scene.png";
+scene.src = "/valentines-card/assets/scene.png";
 const card = new Image();
-card.src = "/assets/heart-envelope.png";
+card.src = "/valentines-card/assets/heart-envelope.png";
 // shreyaSprite.src = "/assets/shreya.png";
 // shreyaSpriteFlipped.src = "/assets/shreya-flipped.png";
 // johnSprite.src = "/assets/john.png";
@@ -33,7 +33,7 @@ function loadSpriteCycle(name, frames) {
   var resp = [];
   for (let frame = 0; frame < frames; frame++) {
     let sprite = new Image();
-    sprite.src = `/assets/sprites/${name}/sprite-${frame}.png`;
+    sprite.src = `/valentines-card/assets/sprites/${name}/sprite-${frame}.png`;
     // console.log(sprite);
     resp.push(sprite);
   }
@@ -50,7 +50,7 @@ const ENVELOPE_SCALE = 4;
 const envelopeFrames = [];
 for (let frame = 0; frame < 12; frame++) {
   const sprite = new Image();
-  sprite.src = `/assets/envelope/envelope-${String(frame).padStart(2, "0")}.png`;
+  sprite.src = `/valentines-card/assets/envelope/envelope-${String(frame).padStart(2, "0")}.png`;
   envelopeFrames.push(sprite);
 }
 
