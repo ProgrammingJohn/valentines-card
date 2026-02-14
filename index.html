@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2D Game</title>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+  body {
+    background: #1b1b1b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    gap: 12px;
+  }
+
+  #game-shell {
+    position: relative;
+  }
+
+  canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    width: min(95vw, 768px);
+    height: auto;
+    border: 3px solid #333;
+  }
+
+  #valentine-overlay {
+    position: absolute;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+  }
+
+  #valentine-overlay.show {
+    display: flex;
+  }
+
+  #valentine-content {
+    transform: translateY(10px);
+  }
+
+  #valentine-message {
+    font-family: "Press Start 2P", "Courier New", monospace;
+    color: #000000;
+    /* font-size: clamp(10px, 1.6vw, 18px); */
+    font-size: 13px;
+    line-height: 1.8;
+    padding: 0 16px;
+    opacity: 1;
+    text-align: center;
+  }
+
+  #valentine-heart {
+    display: block;
+    width: clamp(30px, 6vw, 30px);
+    height: auto;
+    margin: 20px auto 0;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  #mobile-controls {
+    display: flex;
+    gap: 12px;
+  }
+
+  #mobile-controls button {
+    min-width: 54px;
+    min-height: 54px;
+    border: 2px solid #101010;
+    background: #f1d48a;
+    color: #1a1a1a;
+    font-family: "Press Start 2P", "Courier New", monospace;
+    font-size: 16px;
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+</style>
+</head>
+
+<body>
+  <div id="game-shell">
+    <canvas id="game"></canvas>
+    <div id="valentine-overlay">
+      <div id="valentine-content">
+        <div id="valentine-message">Will You Be <br>My<br> <span style="color: #c83b21; font-size: 15px;">Valentine?</span></div>
+        <img id="valentine-heart" src="/assets/heart.png" alt="Pixel heart">
+      </div>
+    </div>
+  </div>
+  <div id="mobile-controls" aria-label="Mobile Controls">
+    <button type="button" data-key="a">A</button>
+    <button type="button" data-key="d">D</button>
+    <button type="button" data-key="e">E</button>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
